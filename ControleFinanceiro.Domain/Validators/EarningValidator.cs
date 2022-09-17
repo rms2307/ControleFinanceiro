@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace ControleFinanceiro.Domain.Validators
 {
-    public class CostValidator : AbstractValidator<Cost>
+    public class EarningValidator : AbstractValidator<Earning>
     {
-        public CostValidator()
+        public EarningValidator()
         {
             RuleFor(x => x.CategoryId)
                 .NotNull();
@@ -16,15 +16,8 @@ namespace ControleFinanceiro.Domain.Validators
                 .MinimumLength(3)
                 .MaximumLength(45);
 
-            RuleFor(x => x.Amount)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThanOrEqualTo(0);
-
-            RuleFor(x => x.DebitDay)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThanOrEqualTo(DateTime.Now.Day);
+            RuleFor(x => x.DateOfEarning)
+               .GreaterThanOrEqualTo(DateTime.Now);
         }
     }
 }

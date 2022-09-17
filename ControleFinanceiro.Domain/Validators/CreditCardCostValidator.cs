@@ -3,11 +3,14 @@ using FluentValidation;
 
 namespace ControleFinanceiro.Domain.Validators
 {
-    public class CostValidator : AbstractValidator<Cost>
+    public class CreditCardCostValidator : AbstractValidator<CreditCardCost>
     {
-        public CostValidator()
+        public CreditCardCostValidator()
         {
             RuleFor(x => x.CategoryId)
+                .NotNull();
+
+            RuleFor(x => x.CreditCardId)
                 .NotNull();
 
             RuleFor(x => x.Description)
@@ -21,10 +24,13 @@ namespace ControleFinanceiro.Domain.Validators
                 .NotEmpty()
                 .GreaterThanOrEqualTo(0);
 
-            RuleFor(x => x.DebitDay)
+            RuleFor(x => x.BuyDay)
+                .GreaterThanOrEqualTo(DateTime.Now);
+
+            RuleFor(x => x.NumberInstallments)
                 .NotNull()
                 .NotEmpty()
-                .GreaterThanOrEqualTo(DateTime.Now.Day);
+                .GreaterThanOrEqualTo(1);
         }
     }
 }
