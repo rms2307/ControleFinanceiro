@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ControleFinaceiro.Application\ControleFinanceiro.Application.csproj" />
+    <ProjectReference Include="..\ControleFinanceiro.Domain\ControleFinanceiro.Domain.csproj" />
+    <ProjectReference Include="..\ControleFinanceiro.Infra.Data\ControleFinanceiro.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
