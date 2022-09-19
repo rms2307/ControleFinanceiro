@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: controle_financeiro_db
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: controle_financeiro
+      POSTGRES_USER: controle_financeiro
+      POSTGRES_DB: controle_financeiro
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - .\database\postgres:\var\lib\postgresql\data

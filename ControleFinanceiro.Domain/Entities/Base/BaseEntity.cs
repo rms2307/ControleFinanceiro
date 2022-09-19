@@ -3,7 +3,7 @@
     public abstract class BaseEntity
     {
         public int Id { get; protected set; }
-        public DateTime DateLog { get; protected set; }
-        public DateTime UserLog { get; protected set; }
+        public string? UserLog { get; set; }
+        public DateTime DateLog { get; set; }
     }
 }

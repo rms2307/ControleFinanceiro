@@ -1,19 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>8869c4f6-b71a-4567-9321-79c7bc2048b4</UserSecretsId>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Controllers\" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ControleFinanceiro.Infra.IoC\ControleFinanceiro.Infra.IoC.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ControleFinanceiro.Infra.IoC\ControleFinanceiro.Infra.IoC.csproj" />
+    </ItemGroup>
 
 </Project>
