@@ -1,4 +1,5 @@
 ﻿using ControleFinanceiro.Infra.Data.Context;
+﻿using ControleFinanceiro.Application.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,8 +13,14 @@ namespace ControleFinanceiro.Infra.IoC
         {
             RegisterContext(services, configuration);
             RegisterContextSwagger(services, configuration);
+            RegisterAutoMapper(services, configuration);
 
             return services;
+        }
+
+        private static void RegisterAutoMapper(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
         }
 
         private static void RegisterContext(IServiceCollection services, IConfiguration configuration)
