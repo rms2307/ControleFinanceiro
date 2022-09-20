@@ -1,5 +1,9 @@
-﻿using ControleFinanceiro.Infra.Data.Context;
 ﻿using ControleFinanceiro.Application.Mappings;
+using ControleFinanceiro.Application.Services;
+using ControleFinanceiro.Domain.Interfaces.Repositories;
+using ControleFinanceiro.Domain.Interfaces.Services;
+using ControleFinanceiro.Infra.Data.Context;
+using ControleFinanceiro.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +18,8 @@ namespace ControleFinanceiro.Infra.IoC
             RegisterContext(services, configuration);
             RegisterContextSwagger(services, configuration);
             RegisterAutoMapper(services, configuration);
+            ResgisterRepositories(services, configuration);
+            ResgisterServices(services, configuration);
 
             return services;
         }
@@ -21,6 +27,16 @@ namespace ControleFinanceiro.Infra.IoC
         private static void RegisterAutoMapper(IServiceCollection services, IConfiguration configuration)
         {
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
+        }
+
+        private static void ResgisterServices(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped<ICategoryService, CategoryService>();
+        }
+
+        private static void ResgisterRepositories(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         private static void RegisterContext(IServiceCollection services, IConfiguration configuration)

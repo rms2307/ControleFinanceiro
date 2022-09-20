@@ -1,13 +1,13 @@
-﻿using ControleFinanceiro.Domain.Entities;
+﻿using ControleFinanceiro.Domain.Dtos;
 
 namespace ControleFinanceiro.Domain.Interfaces.Services
 {
     public interface ICategoryService
     {
-        IEnumerable<Category> GetAll();
-        Category GetById(int id);
-        void Add(Category obj);
-        void Update(Category obj);
-        void Delete(Category obj);
+        IEnumerable<CategoryResponseDto> GetAll();
+        CategoryResponseDto GetById(int id);
+        void Add(CategoryRequestDto obj);
+        void Update(CategoryRequestDto obj);
+        void Delete(CategoryRequestDto obj);
     }
 }
