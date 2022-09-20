@@ -27,12 +27,21 @@ namespace ControleFinanceiro.Infra.Data.Repositories.Base
             => _entity.Where(predicate).ToList();
 
         public void Add(T obj)
-            => _entity.Add(obj);
+        {
+            _entity.Add(obj);
+            _context.SaveChanges();
+        }
 
         public void Update(T obj)
-            => _entity.Update(obj);
+        {
+            _entity.Update(obj);
+            _context.SaveChanges();
+        }
 
         public void Delete(T obj)
-            => _entity.Remove(obj);
+        {
+            _entity.Remove(obj);
+            _context.SaveChanges();
+        }
     }
 }

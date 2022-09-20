@@ -1,4 +1,4 @@
-﻿using ControleFinanceiro.Domain.Dtos;
+﻿using ControleFinanceiro.Domain.Dtos.Category;
 
 namespace ControleFinanceiro.Domain.Interfaces.Services
 {
@@ -6,8 +6,8 @@ namespace ControleFinanceiro.Domain.Interfaces.Services
     {
         IEnumerable<CategoryResponseDto> GetAll();
         CategoryResponseDto GetById(int id);
-        void Add(CategoryRequestDto obj);
-        void Update(CategoryRequestDto obj);
-        void Delete(CategoryRequestDto obj);
+        int Add(CategoryRequestDto dto);
+        void Update(int id, CategoryRequestDto dto);
+        void Delete(int id);
     }
 }

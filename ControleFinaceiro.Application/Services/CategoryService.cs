@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using ControleFinanceiro.Domain.Dtos;
+using ControleFinanceiro.Domain.Dtos.Category;
+using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Exceptions;
 using ControleFinanceiro.Domain.Interfaces.Repositories;
 using ControleFinanceiro.Domain.Interfaces.Services;
@@ -26,26 +27,41 @@ namespace ControleFinanceiro.Application.Services
 
         public CategoryResponseDto GetById(int id)
         {
-            var category = _mapper.Map<CategoryResponseDto>(_categoryRepository.GetById(id));
-            if (category is null)
+            Category category = _categoryRepository.GetById(id);
+            ValidateNull(category);
+
+            return _mapper.Map<CategoryResponseDto>(category);
+        }
+
+        public int Add(CategoryRequestDto dto)
+        {
+            Category category = _mapper.Map<Category>(dto);
+            _categoryRepository.Add(category);
+
+            return category.Id;
+        }
+
+        public void Update(int id, CategoryRequestDto dto)
+        {
+            Category category = _categoryRepository.GetById(id);
+            ValidateNull(category);
+
+            category.Update(dto.Name);
+            _categoryRepository.Update(category);
+        }
+
+        public void Delete(int id)
+        {
+            Category category = _categoryRepository.GetById(id);
+            ValidateNull(category);
+
+            _categoryRepository.Delete(category);
+        }
+
+        private static void ValidateNull(Category categoryDto)
+        {
+            if (categoryDto is null)
                 throw new NotFoundException("Categoria não encontrada.");
-
-            return category;
-        }
-
-        public void Add(CategoryRequestDto obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(CategoryRequestDto obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(CategoryRequestDto obj)
-        {
-            throw new NotImplementedException();
         }
     }
 }

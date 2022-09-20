@@ -22,7 +22,7 @@ namespace ControleFinanceiro.Domain.Entities
             Name = name;
         }
 
-        public void Atualizar(string name)
+        public void Update(string name)
         {
             Name = name;
         }

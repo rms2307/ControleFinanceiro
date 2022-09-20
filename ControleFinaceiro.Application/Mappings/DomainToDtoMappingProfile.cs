@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ControleFinanceiro.Domain.Dtos;
+using ControleFinanceiro.Domain.Dtos.Category;
 using ControleFinanceiro.Domain.Entities;
 
 namespace ControleFinanceiro.Application.Mappings
@@ -8,8 +8,8 @@ namespace ControleFinanceiro.Application.Mappings
     {
         public DomainToDtoMappingProfile()
         {
-            CreateMap<Category, CategoryRequestDto>();
-            CreateMap<Category, CategoryResponseDto>();
+            CreateMap<Category, CategoryRequestDto>().ReverseMap();
+            CreateMap<Category, CategoryResponseDto>().ReverseMap();
         }
     }
 }
