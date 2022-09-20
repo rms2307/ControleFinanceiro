@@ -2,17 +2,13 @@
 using ControleFinanceiro.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ControleFinanceiro.Infra.Data.Context
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,16 +17,18 @@ namespace ControleFinanceiro.Infra.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
 
-        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             UpdateSaveChanges();
-            return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+
+            return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public override int SaveChanges()
         {
             UpdateSaveChanges();
-            return await base.SaveChangesAsync(cancellationToken);
+
+            return base.SaveChanges();
         }
 
         private void UpdateSaveChanges()
