@@ -52,6 +52,7 @@ namespace ControleFinanceiro.Api.Middlewares
                 NotFoundException _ => (int)HttpStatusCode.NotFound,
                 UnauthorizedException _ => (int)HttpStatusCode.Unauthorized,
                 ForbiddenException _ => (int)HttpStatusCode.Forbidden,
+                ConflictException _ => (int)HttpStatusCode.Conflict,
                 ServiceUnavailableException _ => (int)HttpStatusCode.ServiceUnavailable,
                 InternalServerErrorException _ => (int)HttpStatusCode.InternalServerError,
                 _ => (int)HttpStatusCode.InternalServerError,
