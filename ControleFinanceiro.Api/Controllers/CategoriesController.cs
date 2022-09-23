@@ -2,10 +2,11 @@
 using ControleFinanceiro.Domain.Dtos.Category;
 using ControleFinanceiro.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace ControleFinanceiro.Api.Controllers
 {
-    [Route("categories")]
+    [Route("api/v1/categories")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -17,6 +18,8 @@ namespace ControleFinanceiro.Api.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Obter todas categorias.")]
+        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status200OK)]
         public ActionResult<ApiResponse<IEnumerable<CategoryResponseDto>>> GetAll()
         {
             var categories = _categoryService.GetAll();
@@ -24,6 +27,9 @@ namespace ControleFinanceiro.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [SwaggerOperation(Summary = "Obter uma categoria pelo id.")]
+        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public ActionResult<ApiResponse<CategoryResponseDto>> GetById([FromRoute] int id)
         {
             var category = _categoryService.GetById(id);
@@ -31,6 +37,10 @@ namespace ControleFinanceiro.Api.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Criar uma categoria.")]
+        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
         public ActionResult<ApiResponse<CategoryResponseDto>> Add([FromBody] CategoryRequestDto dto)
         {
             int id = _categoryService.Add(dto);
@@ -38,6 +48,11 @@ namespace ControleFinanceiro.Api.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [SwaggerOperation(Summary = "Atualizar uma categoria.")]
+        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
         public ActionResult Update([FromRoute] int id, [FromBody] CategoryRequestDto dto)
         {
             _categoryService.Update(id, dto);
@@ -45,6 +60,10 @@ namespace ControleFinanceiro.Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [SwaggerOperation(Summary = "Remover uma categoria.")]
+        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         public ActionResult Delete([FromRoute] int id)
         {
             _categoryService.Delete(id);

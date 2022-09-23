@@ -52,6 +52,7 @@ namespace ControleFinanceiro.Infra.IoC
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ControleFinanceiro.Api", Version = "v1" });
+                c.EnableAnnotations();
             });
         }
     }
