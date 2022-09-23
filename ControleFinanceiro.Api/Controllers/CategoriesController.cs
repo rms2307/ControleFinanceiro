@@ -49,7 +49,7 @@ namespace ControleFinanceiro.Api.Controllers
 
         [HttpPut("{id:int}")]
         [SwaggerOperation(Summary = "Atualizar uma categoria.")]
-        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
@@ -61,7 +61,7 @@ namespace ControleFinanceiro.Api.Controllers
 
         [HttpDelete("{id:int}")]
         [SwaggerOperation(Summary = "Remover uma categoria.")]
-        [ProducesResponseType(typeof(CategoryResponseDto), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         public ActionResult Delete([FromRoute] int id)
