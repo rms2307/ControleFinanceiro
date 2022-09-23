@@ -1,11 +1,7 @@
-﻿using ControleFinanceiro.Api.ApiModels;
-using ControleFinanceiro.Domain.Exceptions;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using ControleFinanceiro.Domain.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ControleFinanceiro.Api.Middlewares
 {
@@ -34,7 +30,15 @@ namespace ControleFinanceiro.Api.Middlewares
         {
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = GetStatusCode(exception);
-            var result = new ApiResponse<string>(exception.Message);
+
+            var result = new ProblemDetails
+            {
+                Title = exception.GetType().Name,
+                Instance = context.Request.Path,
+                Detail = exception.Message,
+                Status = context.Response.StatusCode,
+                Type = "about:blank",
+            };
 
             return context.Response.WriteAsync(JsonSerializer.Serialize(result,
                 new JsonSerializerOptions

@@ -32,10 +32,7 @@ namespace ControleFinanceiro.Domain.Entities
             CategoryValidator validations = new();
             var validationsResult = validations.Validate(this);
             if (!validationsResult.IsValid)
-            {
-                string errors = string.Join("; ", validationsResult.Errors.Select(x => x.ErrorMessage));
-                throw new BadRequestException(errors);
-            }
+                throw new BadRequestException(validationsResult.Errors.Select(x => x.ErrorMessage));
         }
     }
 }
