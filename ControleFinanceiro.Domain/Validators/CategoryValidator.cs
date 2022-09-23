@@ -10,7 +10,7 @@ namespace ControleFinanceiro.Domain.Validators
             RuleFor(x => x.Name)
                 .NotNull()
                 .NotEmpty()
-                .MinimumLength(3)
+                .MinimumLength(2)
                 .MaximumLength(45);
         }
     }
