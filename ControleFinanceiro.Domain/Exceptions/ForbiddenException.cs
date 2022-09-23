@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ControleFinanceiro.Domain.Exceptions
 {
@@ -7,6 +6,7 @@ namespace ControleFinanceiro.Domain.Exceptions
     {
         public ForbiddenException() : this("Não autorizado.") { }
         public ForbiddenException(string message) : base(message) { }
+        public ForbiddenException(IEnumerable<string> messages) : base(string.Join(" ", messages)) { }
         public ForbiddenException(string message, Exception innerException) : base(message, innerException) { }
         protected ForbiddenException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
