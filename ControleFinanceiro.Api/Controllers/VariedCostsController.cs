@@ -44,7 +44,7 @@ namespace ControleFinanceiro.Api.Controllers
         public ActionResult<ApiResponse<VariedCostResponseDto>> Add([FromBody] VariedCostRequestDto dto)
         {
             int id = _variedCostsService.Add(dto);
-            return Created($"varied-costs/{id}", new ApiResponse<VariedCostRequestDto>(dto));
+            return Created($"/api/v1/varied-costs/{id}", new ApiResponse<VariedCostRequestDto>(dto));
         }
 
         [HttpPut("{id:int}")]

@@ -44,7 +44,7 @@ namespace ControleFinanceiro.Api.Controllers
         public ActionResult<ApiResponse<CategoryResponseDto>> Add([FromBody] CategoryRequestDto dto)
         {
             int id = _categoryService.Add(dto);
-            return Created($"categories/{id}", new ApiResponse<CategoryRequestDto>(dto));
+            return Created($"/api/v1/categories/{id}", new ApiResponse<CategoryRequestDto>(dto));
         }
 
         [HttpPut("{id:int}")]
