@@ -1,31 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace ControleFinanceiro.Api.ApiModels
+﻿namespace ControleFinanceiro.Api.ApiModels
 {
     public class ApiResponse<T>
     {
         public T Data { get; private set; }
-        public List<string> Errors { get; private set; } = new();
 
         public ApiResponse(T data)
         {
             Data = data;
-        }
-
-        public ApiResponse(List<string> errors)
-        {
-            Errors = errors;
-        }
-
-        public ApiResponse(string error)
-        {
-            Errors.Add(error);
-        }
-
-        public ApiResponse(T data, List<string> errors)
-        {
-            Data = data;
-            Errors = errors;
         }
     }
 }
