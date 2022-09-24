@@ -10,7 +10,7 @@ namespace ControleFinanceiro.Domain.Validators
             RuleFor(x => x.CategoryId)
                 .NotEmpty()
                 .NotNull()
-                .LessThanOrEqualTo(0);
+                .GreaterThanOrEqualTo(0);
 
             RuleFor(x => x.Description)
                 .NotEmpty()
@@ -21,12 +21,12 @@ namespace ControleFinanceiro.Domain.Validators
             RuleFor(x => x.Amount)
                 .NotEmpty()
                 .NotNull()
-                .LessThanOrEqualTo(0);
+                .GreaterThanOrEqualTo(0);
 
             RuleFor(x => x.DebitDay)
                 .NotEmpty()
                 .NotNull()
-                .LessThanOrEqualTo(0);
+                .GreaterThanOrEqualTo(0);
         }
     }
 }
