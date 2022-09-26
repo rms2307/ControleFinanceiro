@@ -1,6 +1,6 @@
-﻿namespace ControleFinanceiro.Domain.Dtos.VariedCost
+﻿namespace ControleFinanceiro.Domain.Dtos.FixedCost
 {
-    public class VariedCostResponseDto
+    public class FixedCostResponseDto
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }

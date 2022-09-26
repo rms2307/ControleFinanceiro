@@ -32,9 +32,21 @@ namespace ControleFinanceiro.Infra.Data.Repositories.Base
             _context.SaveChanges();
         }
 
+        public void AddRange(IEnumerable<T> obj)
+        {
+            _entity.AddRange(obj);
+            _context.SaveChanges();
+        }
+
         public void Update(T obj)
         {
             _entity.Update(obj);
+            _context.SaveChanges();
+        }
+
+        public void UpdateRange(IEnumerable<T> obj)
+        {
+            _entity.UpdateRange(obj);
             _context.SaveChanges();
         }
 

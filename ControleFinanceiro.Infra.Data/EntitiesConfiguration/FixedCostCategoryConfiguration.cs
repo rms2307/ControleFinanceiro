@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleFinanceiro.Infra.Data.EntitiesConfiguration
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    public class FixedCostCategoryConfiguration : IEntityTypeConfiguration<FixedCostCategory>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<FixedCostCategory> builder)
         {
-            builder.ToTable("Category");
+            builder.ToTable("FixedCostCategory");
 
             builder.HasKey(x => x.Id);
 
@@ -30,6 +30,7 @@ namespace ControleFinanceiro.Infra.Data.EntitiesConfiguration
 
             builder.Property(x => x.Name)
                 .IsRequired()
+                .HasMaxLength(45)
                 .HasColumnOrder(3);
         }
     }

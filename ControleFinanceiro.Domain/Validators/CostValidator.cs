@@ -24,7 +24,7 @@ namespace ControleFinanceiro.Domain.Validators
             RuleFor(x => x.DebitDay)
                 .NotNull()
                 .NotEmpty()
-                .GreaterThanOrEqualTo(DateTime.Now.Day);
+                .GreaterThanOrEqualTo(DateTime.Now);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace ControleFinanceiro.Domain.Entities
 {
     public class VariedCost : Cost
     {
-        public VariedCost(int id, int categoryId, string description, decimal amount, int debitDay)
+        public VariedCost(int id, int categoryId, string description, decimal amount, DateTime debitDay)
         {
             Id = id;
             CategoryId = categoryId;
@@ -15,7 +15,7 @@ namespace ControleFinanceiro.Domain.Entities
             Validate();
         }
 
-        public VariedCost(int categoryId, string description, decimal amount, int debitDay)
+        public VariedCost(int categoryId, string description, decimal amount, DateTime debitDay)
         {
             CategoryId = categoryId;
             Description = description;
@@ -24,7 +24,7 @@ namespace ControleFinanceiro.Domain.Entities
             Validate();
         }
 
-        public void Update(int categoryId, string description, decimal amount, int debitDay)
+        public void Update(int categoryId, string description, decimal amount, DateTime debitDay)
         {
             CategoryId = categoryId;
             Description = description;

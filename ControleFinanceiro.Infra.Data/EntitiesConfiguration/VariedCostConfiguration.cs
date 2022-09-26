@@ -15,28 +15,36 @@ namespace ControleFinanceiro.Infra.Data.EntitiesConfiguration
             builder.HasIndex(x => x.Id);
 
             builder.Property(x => x.Id)
-                .IsRequired();
-
-            builder.Property(x => x.CategoryId)
-                .IsRequired();
-
-            builder.Property(x => x.Description)
                 .IsRequired()
-                .HasMaxLength(45);
-
-            builder.Property(x => x.Amount)
-                .IsRequired();
-
-            builder.Property(x => x.DebitDay)
-                .IsRequired();
+                .HasColumnOrder(0);
 
             builder.Property(x => x.UserLog)
                 .IsRequired()
-                .HasMaxLength(45);
+                .HasMaxLength(45)
+                .HasColumnOrder(1);
 
             builder.Property(x => x.DateLog)
                 .IsRequired()
-                .HasDefaultValueSql("CURRENT_TIMESTAMP"); 
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnOrder(2);
+
+            builder.Property(x => x.CategoryId)
+                .IsRequired()
+                .HasColumnOrder(3);
+
+            builder.Property(x => x.Description)
+                .IsRequired()
+                .HasMaxLength(45)
+                .HasColumnOrder(4);
+
+            builder.Property(x => x.Amount)
+                .IsRequired()
+                .HasColumnOrder(5);
+
+            builder.Property(x => x.DebitDay)
+                .IsRequired()
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnOrder(6);
         }
     }
 }

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ControleFinanceiro.Infra.Data.EntitiesConfiguration
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    public class FixedCostConfiguration : IEntityTypeConfiguration<FixedCost>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<FixedCost> builder)
         {
-            builder.ToTable("Category");
+            builder.ToTable("FixedCost");
 
             builder.HasKey(x => x.Id);
 
@@ -28,9 +28,27 @@ namespace ControleFinanceiro.Infra.Data.EntitiesConfiguration
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnOrder(2);
 
-            builder.Property(x => x.Name)
+            builder.Property(x => x.CategoryId)
                 .IsRequired()
                 .HasColumnOrder(3);
+            
+            builder.Property(x => x.FixedCostCategoryId)
+                .IsRequired()
+                .HasColumnOrder(4);
+
+            builder.Property(x => x.Description)
+                .IsRequired()
+                .HasMaxLength(45)
+                .HasColumnOrder(5);
+
+            builder.Property(x => x.Amount)
+                .IsRequired()
+                .HasColumnOrder(6);
+
+            builder.Property(x => x.DebitDay)
+                .IsRequired()
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnOrder(7);
         }
     }
 }

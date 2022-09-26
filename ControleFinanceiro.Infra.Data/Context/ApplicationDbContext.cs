@@ -11,6 +11,8 @@ namespace ControleFinanceiro.Infra.Data.Context
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<VariedCost> VariedCosts { get; set; }
+        public DbSet<FixedCost> FixedCosts { get; set; }
+        public DbSet<FixedCostCategory> FixedCostCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
