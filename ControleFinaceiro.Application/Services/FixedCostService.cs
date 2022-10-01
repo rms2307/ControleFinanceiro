@@ -4,7 +4,6 @@ using ControleFinanceiro.Domain.Entities;
 using ControleFinanceiro.Domain.Exceptions;
 using ControleFinanceiro.Domain.Interfaces.Repositories;
 using ControleFinanceiro.Domain.Interfaces.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

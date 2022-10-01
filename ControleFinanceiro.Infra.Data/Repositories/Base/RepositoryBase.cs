@@ -55,5 +55,11 @@ namespace ControleFinanceiro.Infra.Data.Repositories.Base
             _entity.Remove(obj);
             _context.SaveChanges();
         }
+
+        public void DeleteRange(IEnumerable<T> obj)
+        {
+            _entity.RemoveRange(obj);
+            _context.SaveChanges();
+        }
     }
 }

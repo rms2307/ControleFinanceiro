@@ -16,7 +16,7 @@ namespace ControleFinanceiro.Domain.Validators
             RuleFor(x => x.LastFourDigits)
                 .NotNull()
                 .NotEmpty()
-                .GreaterThanOrEqualTo(0);
+                .GreaterThan(0);
 
             RuleFor(x => x.LastFourDigits.ToString())
                 .MaximumLength(4);
@@ -24,17 +24,17 @@ namespace ControleFinanceiro.Domain.Validators
             RuleFor(x => x.InvoiceClosingDay)
                 .NotNull()
                 .NotEmpty()
-                .GreaterThanOrEqualTo(0);
-            
+                .GreaterThan(0);
+
             RuleFor(x => x.InvoiceDueDay)
                 .NotNull()
                 .NotEmpty()
-                .GreaterThanOrEqualTo(0);
+                .GreaterThan(0);
 
             RuleFor(x => x.LimitAmount)
                 .NotNull()
                 .NotEmpty()
-                .GreaterThanOrEqualTo(0);
+                .GreaterThan(0);
         }
     }
 }

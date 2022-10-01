@@ -7,12 +7,10 @@ namespace ControleFinanceiro.Application.Services
 {
     public class FixedCostCategoryService : IFixedCostCategoryService
     {
-        private readonly IMapper _mapper;
         private readonly IFixedCostCategoryRepository _fixedCostCategoryRepository;
 
-        public FixedCostCategoryService(IMapper mapper, IFixedCostCategoryRepository fixedCostCategoryRepository)
+        public FixedCostCategoryService(IFixedCostCategoryRepository fixedCostCategoryRepository)
         {
-            _mapper = mapper;
             _fixedCostCategoryRepository = fixedCostCategoryRepository;
         }
 

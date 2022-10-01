@@ -64,9 +64,9 @@ namespace ControleFinanceiro.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
-        public ActionResult Delete([FromRoute] int id)
+        public ActionResult Delete([FromRoute] int id, FixedCostFilterDto filter)
         {
-            _variedCostsService.Delete(id);
+            _variedCostsService.Delete(id, filter);
             return NoContent();
         }
     }
