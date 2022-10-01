@@ -25,9 +25,7 @@ namespace ControleFinanceiro.Application.Services
         }
 
         public IEnumerable<FixedCostResponseDto> GetAll()
-        {
-            return _mapper.Map<IEnumerable<FixedCostResponseDto>>(_fixedCostRepository.GetAll());
-        }
+            => _mapper.Map<IEnumerable<FixedCostResponseDto>>(_fixedCostRepository.GetAll());
 
         public FixedCostResponseDto GetById(int id)
         {
@@ -37,7 +35,7 @@ namespace ControleFinanceiro.Application.Services
             return _mapper.Map<FixedCostResponseDto>(fixedCost);
         }
 
-        public void Add(FixedCostRequestDto dto)
+        public void Add(FixedCostAddRequestDto dto)
         {
             List<FixedCost> fixedCosts = new();
 
@@ -81,12 +79,51 @@ namespace ControleFinanceiro.Application.Services
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int id, FixedCostFilterDto filter)
         {
             FixedCost fixedCost = _fixedCostRepository.GetById(id);
             ValidateNull(fixedCost);
 
-            _fixedCostRepository.Delete(fixedCost);
+            if (filter.Current)
+            {
+                _fixedCostRepository.Delete(fixedCost);
+            }
+
+            if (filter.All)
+            {
+                IEnumerable<FixedCost> fixedsCost = _fixedCostRepository
+                    .Search(x => x.FixedCostCategoryId == fixedCost.FixedCostCategoryId);
+
+                Delete(fixedsCost);
+                return;
+            }
+
+            if (filter.Previous)
+            {
+                IEnumerable<FixedCost> fixedsCost = _fixedCostRepository
+                    .Search(x => x.FixedCostCategoryId == fixedCost.FixedCostCategoryId
+                            && x.DebitDay <= fixedCost.DebitDay);
+
+                Delete(fixedsCost);
+                return;
+            }
+
+            if (filter.Upcoming)
+            {
+                IEnumerable<FixedCost> fixedsCost = _fixedCostRepository
+                    .Search(x => x.FixedCostCategoryId == fixedCost.FixedCostCategoryId
+                            && x.DebitDay >= fixedCost.DebitDay);
+
+                Delete(fixedsCost);
+                return;
+            }
+
+        }
+
+        private void Delete(IEnumerable<FixedCost> fixedsCost)
+        {
+            ValidateNull(fixedsCost);
+            _fixedCostRepository.DeleteRange(fixedsCost);
         }
 
         private void ValidateFilter(FixedCostFilterDto filter)
@@ -99,7 +136,7 @@ namespace ControleFinanceiro.Application.Services
                 throw new BadRequestException("Escolha pelo menos uma opção. (Previous/Current/Upcoming/All)");
         }
 
-        private static void ValidateNull(FixedCost variedCostDto)
+        private void ValidateNull(FixedCost variedCostDto)
         {
             if (variedCostDto is null)
                 throw new NotFoundException();
@@ -111,7 +148,7 @@ namespace ControleFinanceiro.Application.Services
                 throw new NotFoundException();
         }
 
-        private void GenerateCostsForNextMonths(FixedCostRequestDto dto, List<FixedCost> fixedCosts)
+        private void GenerateCostsForNextMonths(FixedCostAddRequestDto dto, List<FixedCost> fixedCosts)
         {
             var nextDebitDays = dto.DebitDay.AddMonths(1);
             for (int i = 1; i < dto.Frequency; i++)

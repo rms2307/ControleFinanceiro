@@ -13,5 +13,6 @@ namespace ControleFinanceiro.Domain.Interfaces.Repositories.Base
         void Update(T obj);
         void UpdateRange(IEnumerable<T> obj);
         void Delete(T obj);
+        void DeleteRange(IEnumerable<T> obj);
     }
 }

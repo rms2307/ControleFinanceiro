@@ -16,11 +16,11 @@ namespace ControleFinanceiro.Application.Mappings
             CreateMap<VariedCost,VariedCostRequestDto>().ReverseMap();
             CreateMap<VariedCost, VariedCostResponseDto>().ReverseMap();
             
-            CreateMap<FixedCost, FixedCostRequestDto>().ReverseMap();
+            CreateMap<FixedCost, FixedCostAddRequestDto>().ReverseMap();
             CreateMap<FixedCost, FixedCostEditRequestDto>().ReverseMap();
             CreateMap<FixedCost, FixedCostResponseDto>().ReverseMap();
 
-            CreateMap<Cost, FixedCostRequestDto>().ReverseMap();
+            CreateMap<Cost, FixedCostAddRequestDto>().ReverseMap();
             CreateMap<Cost, FixedCostResponseDto>().ReverseMap();
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace ControleFinanceiro.Domain.Dtos.FixedCost
 {
-    public class FixedCostRequestDto
+    public class FixedCostAddRequestDto
     {
         public int FixedCostCategoryId { get; set; }
         public int CategoryId { get; set; }

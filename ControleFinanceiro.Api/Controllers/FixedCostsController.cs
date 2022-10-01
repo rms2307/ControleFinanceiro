@@ -41,10 +41,10 @@ namespace ControleFinanceiro.Api.Controllers
         [ProducesResponseType(typeof(FixedCostResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
-        public ActionResult<ApiResponse<FixedCostResponseDto>> Add([FromBody] FixedCostRequestDto dto)
+        public ActionResult<ApiResponse<FixedCostResponseDto>> Add([FromBody] FixedCostAddRequestDto dto)
         {
             _variedCostsService.Add(dto);
-            return Created(string.Empty, new ApiResponse<FixedCostRequestDto>(dto));
+            return Created(string.Empty, new ApiResponse<FixedCostAddRequestDto>(dto));
         }
 
         [HttpPut("{id:int}")]

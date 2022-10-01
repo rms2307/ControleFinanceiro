@@ -6,8 +6,8 @@ namespace ControleFinanceiro.Domain.Interfaces.Services
     {
         IEnumerable<FixedCostResponseDto> GetAll();
         FixedCostResponseDto GetById(int id);
-        void Add(FixedCostRequestDto dto);
+        void Add(FixedCostAddRequestDto dto);
         void Update(int id, FixedCostEditRequestDto dto, FixedCostFilterDto filter);
-        void Delete(int id);
+        void Delete(int id, FixedCostFilterDto filter);
     }
 }
