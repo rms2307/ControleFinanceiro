@@ -10,9 +10,9 @@ namespace ControleFinanceiro.Infra.Data.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<VariedCost> VariedCosts { get; set; }
-        public DbSet<FixedCost> FixedCosts { get; set; }
-        public DbSet<FixedCostCategory> FixedCostCategories { get; set; }
+        public DbSet<VariedSpend> VariedSpends { get; set; }
+        public DbSet<FixedSpend> FixedSpends { get; set; }
+        public DbSet<FixedSpendCategory> FixedSpendCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

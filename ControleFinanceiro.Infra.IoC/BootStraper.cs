@@ -32,17 +32,17 @@ namespace ControleFinanceiro.Infra.IoC
         private static void ResgisterServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IVariedCostService, VariedCostService>();
-            services.AddScoped<IFixedCostService, FixedCostService>();
-            services.AddScoped<IFixedCostCategoryService, FixedCostCategoryService>();
+            services.AddScoped<IVariedSpendService, VariedSpendService>();
+            services.AddScoped<IFixedSpendService, FixedSpendService>();
+            services.AddScoped<IFixedSpendCategoryService, FixedSpendCategoryService>();
         }
 
         private static void ResgisterRepositories(IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IVariedCostRepository, VariedCostRepository>();
-            services.AddScoped<IFixedCostRepository, FixedCostRepository>();
-            services.AddScoped<IFixedCostCategoryRepository, FixedCostCategoryRepository>();
+            services.AddScoped<IVariedSpendRepository, VariedSpendRepository>();
+            services.AddScoped<IFixedSpendtRepository, FixedSpendRepository>();
+            services.AddScoped<IFixedSpendCategoryRepository, FixedSpendCategoryRepository>();
         }
 
         private static void RegisterContext(IServiceCollection services, IConfiguration configuration)

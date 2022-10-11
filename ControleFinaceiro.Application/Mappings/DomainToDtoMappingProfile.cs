@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ControleFinanceiro.Domain.Dtos.Category;
-using ControleFinanceiro.Domain.Dtos.FixedCost;
-using ControleFinanceiro.Domain.Dtos.VariedCost;
+using ControleFinanceiro.Domain.Dtos.FixedSpend;
+using ControleFinanceiro.Domain.Dtos.VariedSpend;
 using ControleFinanceiro.Domain.Entities;
 
 namespace ControleFinanceiro.Application.Mappings
@@ -13,15 +13,15 @@ namespace ControleFinanceiro.Application.Mappings
             CreateMap<Category, CategoryRequestDto>().ReverseMap();
             CreateMap<Category, CategoryResponseDto>().ReverseMap();
 
-            CreateMap<VariedCost,VariedCostRequestDto>().ReverseMap();
-            CreateMap<VariedCost, VariedCostResponseDto>().ReverseMap();
+            CreateMap<VariedSpend,VariedSpendRequestDto>().ReverseMap();
+            CreateMap<VariedSpend, VariedSpendResponseDto>().ReverseMap();
             
-            CreateMap<FixedCost, FixedCostAddRequestDto>().ReverseMap();
-            CreateMap<FixedCost, FixedCostEditRequestDto>().ReverseMap();
-            CreateMap<FixedCost, FixedCostResponseDto>().ReverseMap();
+            CreateMap<FixedSpend, FixedSpendAddRequestDto>().ReverseMap();
+            CreateMap<FixedSpend, FixedSpendEditRequestDto>().ReverseMap();
+            CreateMap<FixedSpend, FixedSpendResponseDto>().ReverseMap();
 
-            CreateMap<Cost, FixedCostAddRequestDto>().ReverseMap();
-            CreateMap<Cost, FixedCostResponseDto>().ReverseMap();
+            CreateMap<Spend, FixedSpendAddRequestDto>().ReverseMap();
+            CreateMap<Spend, FixedSpendResponseDto>().ReverseMap();
         }
     }
 }
