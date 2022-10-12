@@ -20,8 +20,8 @@ namespace ControleFinanceiro.Infra.Data.Repositories.Base
         public IEnumerable<T> GetAll()
             => _entity.AsNoTracking().ToList();
 
-        public T GetById(int id)
-            => _entity.FirstOrDefault(x => x.Id == id);
+        public virtual T GetById(int id)
+            => _entity.FirstOrDefault(x => x.Id == id)!;
 
         public IEnumerable<T> Search(Expression<Func<T, bool>> predicate)
             => _entity.Where(predicate).ToList();

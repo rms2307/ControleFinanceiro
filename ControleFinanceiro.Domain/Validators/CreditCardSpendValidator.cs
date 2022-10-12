@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace ControleFinanceiro.Domain.Validators
 {
-    public class CreditCardCostValidator : AbstractValidator<CreditCardCost>
+    public class CreditCardSpendValidator : AbstractValidator<CreditCardSpend>
     {
-        public CreditCardCostValidator()
+        public CreditCardSpendValidator()
         {
             RuleFor(x => x.CategoryId)
                 .NotNull();
@@ -24,13 +24,14 @@ namespace ControleFinanceiro.Domain.Validators
                 .NotEmpty()
                 .GreaterThanOrEqualTo(0);
 
-            RuleFor(x => x.BuyDay)
-                .GreaterThanOrEqualTo(DateTime.Now);
-
-            RuleFor(x => x.NumberInstallments)
+            RuleFor(x => x.NumberOfInstallments)
                 .NotNull()
-                .NotEmpty()
-                .GreaterThanOrEqualTo(1);
+                .NotEmpty()                
+                .GreaterThan(0);
+
+            RuleFor(x => x.BuyDay)
+                .NotNull()
+                .NotEmpty();
         }
     }
 }

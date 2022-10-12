@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ControleFinanceiro.Domain.Dtos.Category;
+using ControleFinanceiro.Domain.Dtos.CreditCard;
 using ControleFinanceiro.Domain.Dtos.FixedSpend;
 using ControleFinanceiro.Domain.Dtos.VariedSpend;
 using ControleFinanceiro.Domain.Entities;
@@ -22,6 +23,12 @@ namespace ControleFinanceiro.Application.Mappings
 
             CreateMap<Spend, FixedSpendAddRequestDto>().ReverseMap();
             CreateMap<Spend, FixedSpendResponseDto>().ReverseMap();
+
+            CreateMap<CreditCard, CreditCardRequestDto>().ReverseMap();
+            CreateMap<CreditCard, CreditCardResponseDto>().ReverseMap();
+
+            CreateMap<CreditCardSpend, CreditCardSpendRequestDto>().ReverseMap();
+            CreateMap<CreditCardSpend, CreditCardSpendResponseDto>().ReverseMap();
         }
     }
 }

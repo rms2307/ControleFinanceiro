@@ -3,6 +3,7 @@ using System;
 using ControleFinanceiro.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ControleFinanceiro.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221011210432_UpdateTableCreditCardSpendAndCreditCard")]
+    partial class UpdateTableCreditCardSpendAndCreditCard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,9 +138,6 @@ namespace ControleFinanceiro.Infra.Data.Migrations
                         .HasColumnType("character varying(45)")
                         .HasColumnOrder(5);
 
-                    b.Property<int>("NumberOfInstallments")
-                        .HasColumnType("integer");
-
                     b.Property<string>("UserLog")
                         .IsRequired()
                         .HasMaxLength(45)
@@ -154,52 +153,6 @@ namespace ControleFinanceiro.Infra.Data.Migrations
                     b.HasIndex("Id");
 
                     b.ToTable("CreditCardSpend", (string)null);
-                });
-
-            modelBuilder.Entity("ControleFinanceiro.Domain.Entities.CreditCardSpendInstallment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnOrder(0);
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CreditCardSpendId")
-                        .HasColumnType("integer")
-                        .HasColumnOrder(6);
-
-                    b.Property<DateTime>("DateLog")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnOrder(2)
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<decimal>("InstallmentAmount")
-                        .HasColumnType("numeric")
-                        .HasColumnOrder(4);
-
-                    b.Property<DateTime>("InstallmentDueDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnOrder(3);
-
-                    b.Property<int>("InstallmentNumber")
-                        .HasColumnType("integer")
-                        .HasColumnOrder(5);
-
-                    b.Property<string>("UserLog")
-                        .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("character varying(45)")
-                        .HasColumnOrder(1);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreditCardSpendId");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("CreditCardSpendInstallment", (string)null);
                 });
 
             modelBuilder.Entity("ControleFinanceiro.Domain.Entities.FixedSpend", b =>
@@ -361,17 +314,6 @@ namespace ControleFinanceiro.Infra.Data.Migrations
                     b.Navigation("CreditCard");
                 });
 
-            modelBuilder.Entity("ControleFinanceiro.Domain.Entities.CreditCardSpendInstallment", b =>
-                {
-                    b.HasOne("ControleFinanceiro.Domain.Entities.CreditCardSpend", "CreditCardSpend")
-                        .WithMany("CreditCardSpendInstallments")
-                        .HasForeignKey("CreditCardSpendId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreditCardSpend");
-                });
-
             modelBuilder.Entity("ControleFinanceiro.Domain.Entities.FixedSpend", b =>
                 {
                     b.HasOne("ControleFinanceiro.Domain.Entities.Category", "Category")
@@ -405,11 +347,6 @@ namespace ControleFinanceiro.Infra.Data.Migrations
             modelBuilder.Entity("ControleFinanceiro.Domain.Entities.CreditCard", b =>
                 {
                     b.Navigation("CreditCardSpends");
-                });
-
-            modelBuilder.Entity("ControleFinanceiro.Domain.Entities.CreditCardSpend", b =>
-                {
-                    b.Navigation("CreditCardSpendInstallments");
                 });
 #pragma warning restore 612, 618
         }

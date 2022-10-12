@@ -13,6 +13,9 @@ namespace ControleFinanceiro.Infra.Data.Context
         public DbSet<VariedSpend> VariedSpends { get; set; }
         public DbSet<FixedSpend> FixedSpends { get; set; }
         public DbSet<FixedSpendCategory> FixedSpendCategories { get; set; }
+        public DbSet<CreditCard> CreditCards { get; set; }
+        public DbSet<CreditCardSpend> CreditCardSpends { get; set; }
+        public DbSet<CreditCardSpendInstallment> CreditCardSpendInstallments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -7,12 +7,6 @@ namespace ControleFinanceiro.Domain.Validators
     {
         public CreditCardValidator()
         {
-            RuleFor(x => x.Description)
-                .NotNull()
-                .NotEmpty()
-                .MinimumLength(3)
-                .MaximumLength(45);
-
             RuleFor(x => x.LastFourDigits)
                 .NotNull()
                 .NotEmpty()

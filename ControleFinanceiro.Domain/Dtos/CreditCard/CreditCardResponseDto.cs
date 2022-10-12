@@ -2,7 +2,7 @@
 {
     public class CreditCardResponseDto
     {
-        public string? Description { get; set; }
+        public int Id { get; set; }
         public int LastFourDigits { get; set; }
         public int InvoiceClosingDay { get; set; }
         public int InvoiceDueDay { get; set; }

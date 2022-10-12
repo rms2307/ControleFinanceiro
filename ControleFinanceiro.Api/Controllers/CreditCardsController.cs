@@ -37,14 +37,14 @@ namespace ControleFinanceiro.Api.Controllers
         }
 
         [HttpPost]
-        [SwaggerOperation(Summary = "Criar uma categoria.")]
+        [SwaggerOperation(Summary = "Cadastrar um cartão de credito.")]
         [ProducesResponseType(typeof(CreditCardResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
         public ActionResult<ApiResponse<CreditCardResponseDto>> Add([FromBody] CreditCardRequestDto dto)
         {
             int id = _creditCardService.Add(dto);
-            return Created($"/api/v1/categories/{id}", new ApiResponse<CreditCardRequestDto>(dto));
+            return Created($"/api/v1/credit-cards/{id}", new ApiResponse<CreditCardRequestDto>(dto));
         }
 
         [HttpPut("{id:int}")]

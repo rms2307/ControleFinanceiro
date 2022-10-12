@@ -45,7 +45,7 @@ namespace ControleFinanceiro.Application.Services
             CreditCard creditCard = _creditCardRepository.GetById(id);
             ValidateNull(creditCard);
 
-            creditCard.Update(dto.Description, dto.LastFourDigits, dto.InvoiceDueDay, 
+            creditCard.Update(dto.LastFourDigits, dto.InvoiceClosingDay, 
                 dto.InvoiceDueDay, dto.LimitAmount);
             _creditCardRepository.Update(creditCard);
         }
@@ -58,10 +58,10 @@ namespace ControleFinanceiro.Application.Services
             _creditCardRepository.Delete(creditCard);
         }
 
-        private static void ValidateNull(CreditCard CreditCardDto)
+        private static void ValidateNull(CreditCard creditCardDto)
         {
-            if (CreditCardDto is null)
-                throw new NotFoundException("Categoria não encontrada.");
+            if (creditCardDto is null)
+                throw new NotFoundException("Cartão não encontrado.");
         }
     }
 }
